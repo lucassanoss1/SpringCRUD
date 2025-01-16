@@ -61,5 +61,4 @@ public class HibernateConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory.getObject());
         return transactionManager;
     }
-
 }

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Users</title>
+    <title>Update user</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,40 +64,16 @@
     </style>
 </head>
 <body>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${user}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.age}"></td>
-        <td th:text="${user.email}"></td>
-    </tr>
-    </tbody>
-</table>
-<a th:href="@{/add}" class="buttonAdd">Add User</a>
-<br>
-<form action="#" th:action="@{/remove}" method="get">
-    <label for="removeId">Enter ID to remove:</label>
-    <input type="text" id="removeId" name="id"/>
-    <input type="submit" class="button" value="Remove User"/>
-</form>
-<form action="#" th:action="@{/find}" method="get">
-    <label for="findId">Enter ID to find:</label>
-    <input type="text" id="findId" name="id"/>
-    <input type="submit" class="button" value="Find User"/>
-</form>
-<form action="#" th:action="@{/update}" method="get">
-    <label for="findId">Enter ID to update:</label>
-    <input type="text" id="updateId" name="id"/>
-    <input type="submit" class="button" value="Update User"/>
+<h1>Edit User</h1>
+<form action="#" method="POST" th:action="@{/update}" th:object="${user}">
+    <input type="hidden" th:field="*{id}"/>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/><br/>
+    <label for="email">Email:</label>
+    <input type="text" id="email" th:field="*{email}" required/><br/>
+    <label for="age">Age:</label>
+    <input type="number" id="age" th:field="*{age}" required/><br/>
+    <input type="submit" value="Update User" class="button"/>
 </form>
 </body>
 </html>

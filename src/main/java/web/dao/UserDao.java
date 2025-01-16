@@ -9,4 +9,5 @@ public interface UserDao {
     public List<User> getAllUsers();
     public User findUserById(long id);
     public void removeUserById(long id);
+    public void updateUser(User user);
 }

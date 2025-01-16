@@ -42,4 +42,10 @@ public class UserDaoImpl implements UserDao {
     public void removeUserById(long id) {
         en.remove(en.find(User.class, id));
     }
+
+    @Override
+    @Transactional
+    public void updateUser(User user) {
+        en.merge(user);
+    }
 }
