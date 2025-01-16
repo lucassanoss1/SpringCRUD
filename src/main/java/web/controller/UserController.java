@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+    public String addUser(@ModelAttribute("user") @Valid User user) {
         userServis.addUser(user);
         return "redirect:/users";
     }
