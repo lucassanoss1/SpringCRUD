@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #000cf1;
+        }
+
+        .buttonAdd {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background: chartreuse;
+            position: relative;
+            left: 10px;
+        }
+
+        .buttonAdd:hover {
+            background-color: #000cf1;
+        }
+    </style>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/add}" class="buttonAdd">Add User</a>
+<br>
+<form action="#" th:action="@{/remove}" method="get">
+    <label for="removeId">Enter ID to remove:</label>
+    <input type="text" id="removeId" name="id"/>
+    <input type="submit" class="button" value="Remove User"/>
+</form>
+<form action="#" th:action="@{/find}" method="get">
+    <label for="findId">Enter ID to find:</label>
+    <input type="text" id="findId" name="id"/>
+    <input type="submit" class="button" value="Find User"/>
+</form>
+</body>
+</html>
